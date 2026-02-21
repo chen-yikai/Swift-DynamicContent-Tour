@@ -29,8 +29,11 @@ struct ContentView: View {
                 }
             }.clipShape(RoundedRectangle(cornerRadius: 20))
             TextField("Add Name", text: $inputName).onSubmit {
-                if !inputName.isEmpty {
-                    names.append(inputName)
+                let name = inputName.trimmingCharacters(
+                    in: .whitespacesAndNewlines
+                )
+                if !name.isEmpty {
+                    names.append(name)
                     inputName = ""
                 }
             }
